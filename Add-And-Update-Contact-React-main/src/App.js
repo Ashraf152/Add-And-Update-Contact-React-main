@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-//ייבוא ספריות של CSS עם BOOTSRTAP
 import 'bootstrap/dist/css/bootstrap.css';
 import Header from './components/Header';
 import Contact from './components/Contact';
 import AddContact from './components/AddContact';
 
 
-//state זה אובייקט שיהיו בתוכו כל הנתונים
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -71,7 +69,7 @@ class App extends React.Component {
   //map זה פונקציה שרצה על מערך ויש בה לולאות
   // key מילה שמורה 
 
-  //פונקציה
+ 
   handleDelete=(id)=>{
     const elementsIndex = this.state.contacts.findIndex(element => element.id == id)
     const update=this.state.contacts.filter(person=>person.id!=id);
@@ -79,9 +77,6 @@ class App extends React.Component {
     this.setState({contacts:update})
   }
 
-//setstate מבצע 
-//event זה בעצם אירוע של onchange כאשר משהו מתבצע ואז מופעלת הפונקציה event.target
-//
   handleChange=(event)=>{
     this.setState({[event.target.name]:event.target.value})
   }
@@ -89,16 +84,13 @@ class App extends React.Component {
     this.setState({value: event.target.value});
    
   }
-  //ולידציה מוודאים
+
   handleAdd=()=>{
     if(this.state.new_name=="")return;
     if(!/^\w+(.\w+)@\w+(.\w+)\.([a-zA-Z]{2,3})$/i.test(this.state.new_email)){
       alert("Invalid Email"); return;
     }
 
-
-
-   //temp מערך זמני שמכיל אובייקט אחד
     const temp = [{
       id:0,
       name:this.state.new_name,
@@ -107,9 +99,7 @@ class App extends React.Component {
      
 
     }]
-    //מערך זמני שכביכול דורס את המערך CONTACTS
-    //set מעדכן את הערכים 
-    //מאפס את השדות לאחר שממלאים אותם
+  
     const tempArray =temp.concat(this.state.contacts)
     this.setState({contacts:tempArray});
     this.setState({new_name:""})
@@ -166,7 +156,7 @@ class App extends React.Component {
   
 
  
-//handle זה טיפול ב EVENT
+
 render() {
   
   return (
